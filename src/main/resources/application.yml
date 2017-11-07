@@ -1,0 +1,59 @@
+server:
+  context-path: /mpserver
+  port: 80
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/mpdemo?characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .ftl
+  freemarker:
+    cache: false
+    request-context-attribute: request
+  jackson:
+#    default-property-inclusion: non_null
+
+
+
+#HoistTheSailsπ´÷⁄∫≈
+wechat:
+  mp:
+    appId:
+    appSecret:
+  server:
+    url:
+    token:
+    encodingAESKey:
+  pay:
+    mchId:
+    mchKey:
+    keyPath:
+    notifyUrl:
+  open:
+    appId:
+    appSecret:
+
+#mybatis≈‰÷√
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+#  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.muyi.mpdemo.view
+
+mapper:
+    mappers:
+        - com.muyi.mpdemo.utils.MyMapper
+    not-empty: false
+    identity: MYSQL
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+
