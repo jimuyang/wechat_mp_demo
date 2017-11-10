@@ -46,8 +46,11 @@ public class WechatMpConfig {
         //WxMpInMemoryConfigStorage wxMpConfigStorage = new WxMpInMemoryConfigStorage();
         WxMpInRedisConfigStorage wxMpConfigStorage = new WxMpInRedisConfigStorage();
 
-        wxMpConfigStorage.setAppId(this.wechatProperties.getMp().getAppId());
-        wxMpConfigStorage.setSecret(this.wechatProperties.getMp().getAppSecret());
+//        wxMpConfigStorage.setAppId(this.wechatProperties.getMp().getAppId());
+//        wxMpConfigStorage.setSecret(this.wechatProperties.getMp().getAppSecret());
+
+        wxMpConfigStorage.setAppId(this.wechatProperties.getMptest().getAppId());
+        wxMpConfigStorage.setSecret(this.wechatProperties.getMptest().getAppSecret());
 
         wxMpConfigStorage.setAesKey(this.wechatProperties.getServer().getEncodingAESKey());
         wxMpConfigStorage.setToken(this.wechatProperties.getServer().getToken());
@@ -55,7 +58,7 @@ public class WechatMpConfig {
         Jedis jedis = new Jedis("localhost",6379);
         wxMpConfigStorage.setJedis(jedis);
 
-        log.info("WxMpConfigStorage: {}",JsonUtil.toJson(wxMpConfigStorage));
+        //log.info("WxMpConfigStorage: {}",JsonUtil.toJson(wxMpConfigStorage));
         return wxMpConfigStorage;
     }
 
@@ -63,7 +66,7 @@ public class WechatMpConfig {
     public WxMpService wxMpService(WxMpConfigStorage wxMpConfigStorage){
         WxMpService wxMpService = new WxMpServiceImpl();
         wxMpService.setWxMpConfigStorage(wxMpConfigStorage);
-        log.info("WxMpService initialized...");
+        log.warn("WxMpService initialized...");
         return wxMpService;
     }
 

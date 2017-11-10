@@ -30,6 +30,8 @@ public class MessageHandler extends BaseHandler {
                                     Map<String, Object> map,
                                     WxMpService wxMpService,
                                     WxSessionManager wxSessionManager) throws WxErrorException {
+        log.info("======> 发送给路由【MessageHandler】");
+
         if(!wxMpXmlMessage.getMsgType().equals(WxConsts.XML_MSG_EVENT)){
             //不是event
         }
@@ -46,7 +48,7 @@ public class MessageHandler extends BaseHandler {
         }
 
         //收到消息
-        String content = "收到消息内容" + JsonUtil.toJson(wxMpXmlMessage);
+        String content = "你好，已经收到你的消息：" + JsonUtil.toJson(wxMpXmlMessage.getContent());
 
         return new WxTextBuilder().build(content,wxMpXmlMessage,wxMpService);
 

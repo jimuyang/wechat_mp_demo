@@ -1,5 +1,6 @@
 package com.muyi.mpdemo.wxhandler;
 
+import com.muyi.mpdemo.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
@@ -28,8 +29,9 @@ public class SubscribeHandler extends BaseHandler {
 
         log.info("新关注用户 OPENID：{}",wxMpXmlMessage.getFromUser());
 
-        //获取微信用户基本信息
+        //获取微信用户基本信息 TODO 无权限获得基本信息
         WxMpUser wxuser = wxMpService.getUserService().userInfo(wxMpXmlMessage.getFromUser(),null);
+        log.info("新关注用户 基本信息:{}", JsonUtil.toJson(wxuser));
         return null;
     }
 

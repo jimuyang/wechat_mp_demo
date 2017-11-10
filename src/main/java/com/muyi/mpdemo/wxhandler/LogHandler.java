@@ -27,7 +27,7 @@ public class LogHandler extends BaseHandler {
                                     Map<String, Object> map,
                                     WxMpService wxMpService,
                                     WxSessionManager wxSessionManager) throws WxErrorException {
-        log.info("\n接收到微信请求消息，内容： {}", JsonUtil.toJson(wxMpXmlMessage));
+        log.info("接收到微信请求消息，内容：\n{}", JsonUtil.toJson(wxMpXmlMessage));
         return null;
     }
 }

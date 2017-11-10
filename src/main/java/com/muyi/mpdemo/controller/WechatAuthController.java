@@ -1,5 +1,6 @@
 package com.muyi.mpdemo.controller;
 
+import com.muyi.mpdemo.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
 import me.chanjar.weixin.mp.api.WxMpService;
@@ -7,6 +8,7 @@ import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.support.NoOpCache;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -20,7 +22,19 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class WechatAuthController {
 
+
     public static final String ENCTYPE_AES = "aes";
+    public static final String MSG_SIGNATURE = "msg_signature";
+    public static final String ENCTYPE_TYPE = "encrypt_type";
+
+
+    public static final String SIGNATURE = "signature";
+    public static final String TIMESTAMP = "timestamp";
+    public static final String NONCE = "nonce";
+    public static final String ECHOSTR = "echostr";
+
+
+
 
     @Autowired
     private WxMpService wxMpService;
@@ -29,10 +43,10 @@ public class WechatAuthController {
     private WxMpMessageRouter wxMpMessageRouter;
 
     @GetMapping(produces = "text/plain;charset=utf-8")
-    public String authGet(@RequestParam("signature") String signature,
-                          @RequestParam("timestamp") String timestamp,
-                          @RequestParam("nonce") String nonce,
-                          @RequestParam("echostr") String echostr){
+    public String wechatAuthGet(@RequestParam(SIGNATURE) String signature,
+                                @RequestParam(TIMESTAMP) String timestamp,
+                                @RequestParam(NONCE) String nonce,
+                                @RequestParam(ECHOSTR) String echostr){
 
         log.info("收到疑为微信服务器认证消息...【{}，{}，{}，{}】",
                 signature,timestamp,nonce,echostr);
@@ -42,7 +56,7 @@ public class WechatAuthController {
         }
 
         if(this.wxMpService.checkSignature(timestamp,nonce,signature)){
-            log.info("签名正确...");
+            log.info("签名正确...,回显str为：{}",echostr);
             return echostr;
         }else{
             log.error("签名验证失败...认证无法通过");
@@ -52,15 +66,15 @@ public class WechatAuthController {
 
 
     @PostMapping(produces = "application/xml; charset=UTF-8")
-    public String postMsg(@RequestBody String requestBody,
-                          @RequestParam("signature") String signature,
-                          @RequestParam("timestamp") String timestamp,
-                          @RequestParam("nonce") String nonce,
-                          @RequestParam(name = "encrypt_type",required = false) String encType,
-                          @RequestParam(name = "msg_signature",required = false) String msgSignature){
+    public String wechatPostMsg(@RequestBody String requestBody,
+                                @RequestParam(SIGNATURE) String signature,
+                                @RequestParam(TIMESTAMP) String timestamp,
+                                @RequestParam(NONCE) String nonce,
+                                @RequestParam(name = ENCTYPE_TYPE,required = false) String encType,
+                                @RequestParam(name = MSG_SIGNATURE,required = false) String msgSignature){
 
-        log.info("\n接收微信请求：[signature=[{}], encType=[{}], msgSignature=[{}],"
-                + " timestamp=[{}], nonce=[{}], requestBody=[\n{}\n]",
+        log.info("<====== 接收微信请求：[signature=[{}], encType=[{}], msgSignature=[{}],"
+                + " timestamp=[{}], nonce=[{}], requestBody=[\n{}]",
                 signature,encType,msgSignature,timestamp,nonce,requestBody);
 
         if(!this.wxMpService.checkSignature(timestamp,nonce,signature)){
@@ -73,20 +87,22 @@ public class WechatAuthController {
             //明文传输的信息
             WxMpXmlMessage inMessage = WxMpXmlMessage.fromXml(requestBody);
             WxMpXmlOutMessage outMessage = this.route(inMessage);
+            log.info("======> 组装回复信息：\n{}", JsonUtil.toJson(outMessage));
             if(outMessage == null) return "";
             logout = outMessage.toXml();
         }else if (encType.equals(ENCTYPE_AES)){
-            //aes 加密的消息
+            //aes加密的消息
             WxMpXmlMessage inMessage = WxMpXmlMessage.fromEncryptedXml(
                     requestBody,this.wxMpService.getWxMpConfigStorage(),timestamp,nonce,msgSignature);
 
-            log.info("\n消息解密后内容为：\n{} ", inMessage.toString());
+            log.info("<====== 消息解密后内容为：\n{} ", JsonUtil.toJson(inMessage));
             WxMpXmlOutMessage outMessage = this.route(inMessage);
+            log.info("======> 组装回复信息：\n{}", JsonUtil.toJson(outMessage));
+
             if(outMessage == null) return "";
             //加密后发回
             logout = outMessage.toEncryptedXml(this.wxMpService.getWxMpConfigStorage());
         }
-        log.info("\n组装回复信息：{}", logout);
         return logout;
     }
 

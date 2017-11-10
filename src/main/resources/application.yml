@@ -1,6 +1,6 @@
 server:
   context-path: /mpserver
-  port: 80
+  port: 8080
 
 spring:
   datasource:
@@ -27,13 +27,16 @@ spring:
 
 #HoistTheSails公众号管理
 wechat:
+  mptest:
+    appId: wxebc5ad283406f8f7
+    appSecret: 2cc1350ab9592dd8609540eee33dc6f2
   mp:
     appId: wx089e473e49a0b9bc
     appSecret: 9b477fe08f7796150833276a419906f2
   server:
-    url:
-    token:
-    encodingAESKey:
+    url: http://muyi.natapp1.cc/mpserver/wechat/portal
+    token: muyimptoken
+    encodingAESKey: gnJTQGs6Hwz6CnmScUYQM6TOyijeKx9bfZ4mYUeMMIU
   pay:
     mchId:
     mchKey:

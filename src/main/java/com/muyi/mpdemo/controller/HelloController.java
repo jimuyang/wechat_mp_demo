@@ -69,6 +69,12 @@ public class HelloController {
         return null;
     }
 
+    @GetMapping("/boolean")
+    public boolean getBoolean(){
+        return true;
+    }
+
+
 
 
 

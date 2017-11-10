@@ -35,13 +35,9 @@ public class GlobalExceptionHandler {
         responseData.setMessage(mpe.getMessage());
         responseData.setStatus(false);
         responseData.setData(null);
+
         return responseData;
     }
-
-
-
-
-
     /**
      * 系统异常处理 404,500
      */

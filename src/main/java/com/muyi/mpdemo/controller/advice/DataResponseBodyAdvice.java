@@ -29,7 +29,7 @@ public class DataResponseBodyAdvice implements ResponseBodyAdvice{
                                   Class aClass,
                                   ServerHttpRequest serverHttpRequest,
                                   ServerHttpResponse serverHttpResponse) {
-        log.info("初始返回数据：{}", JsonUtil.toJson(o));
+        //log.info("初始返回数据：{}", JsonUtil.toJson(o));
         ResponseData data = new ResponseData();
         data.setData(o);
         data.setMessage(null);
@@ -37,8 +37,10 @@ public class DataResponseBodyAdvice implements ResponseBodyAdvice{
         data.setStatus(true);
         //解决无法返回string类型的问题
         if(methodParameter.getMethod().getReturnType().equals(String.class)){
+            log.info("返回结果为：{}",JsonUtil.toJson(data));
             return JsonUtil.toPrettyJson(data);
         }
+        log.info("返回结果为：{}",JsonUtil.toJson(data));
         return data;
     }
 
@@ -47,11 +49,13 @@ public class DataResponseBodyAdvice implements ResponseBodyAdvice{
     public boolean supports(MethodParameter methodParameter, Class aClass) {
         //log.info("methodParameter.method.name: {}", methodParameter.getMethod().getName());
         //log.info("methodParameter.methodAnnotations: {}", methodParameter.getMethodAnnotations());
-        if (methodParameter.getMethodAnnotation(ExceptionHandler.class) == null){
-            return true;
+        //过滤掉 ExceptionHandler 和 wechat
+        if (methodParameter.getMethodAnnotation(ExceptionHandler.class) != null
+                || methodParameter.getMethod().getName().startsWith("wechat")){
+            return false;
         }
         //log.info("class: {}", aClass.getName());
-        return false;
+        return true;
     }
 
 
