@@ -1,6 +1,5 @@
 package com.muyi.mpdemo.wxhandler;
 
-
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
@@ -8,18 +7,17 @@ import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import org.springframework.stereotype.Component;
-import com.muyi.mpdemo.utils.JsonUtil;
 
 import java.util.Map;
 
 /**
  * @Author: muyi
- * @Date: Created in 16:56 2017/11/7
+ * @Date: Created in 11:13 2017/11/8
  * @Description:
  */
 @Component
 @Slf4j
-public class LogHandler extends BaseHandler {
+public class UnsubcribeHandler extends BaseHandler {
 
 
     @Override
@@ -27,7 +25,12 @@ public class LogHandler extends BaseHandler {
                                     Map<String, Object> map,
                                     WxMpService wxMpService,
                                     WxSessionManager wxSessionManager) throws WxErrorException {
-        log.info("\n接收到微信请求消息，内容： {}", JsonUtil.toJson(wxMpXmlMessage));
+
+        String openID = wxMpXmlMessage.getFromUser();
+        log.info("取消关注用户 OPENID: {}",openID);
+
+        //todo 可以更新本地数据库
+
         return null;
     }
 }

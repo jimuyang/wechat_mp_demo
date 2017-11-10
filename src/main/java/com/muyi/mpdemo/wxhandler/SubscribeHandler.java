@@ -41,7 +41,6 @@ public class SubscribeHandler extends BaseHandler {
     private WxMpXmlOutMessage handleSpecial(WxMpXmlMessage wxMessage) throws Exception {
 
         //TODO
-
         return null;
     }
 }

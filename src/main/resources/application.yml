@@ -8,6 +8,11 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/mpdemo?characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
   mvc:
     view:
       prefix: /templates/
@@ -20,11 +25,11 @@ spring:
 
 
 
-#HoistTheSails¹«ÖÚºÅ
+#HoistTheSailså…¬ä¼—å·ç®¡ç†
 wechat:
   mp:
-    appId:
-    appSecret:
+    appId: wx089e473e49a0b9bc
+    appSecret: 9b477fe08f7796150833276a419906f2
   server:
     url:
     token:
@@ -38,7 +43,7 @@ wechat:
     appId:
     appSecret:
 
-#mybatisÅäÖÃ
+#mybatisé…ç½®
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 #  config-location: classpath:mybatis/mybatis-config.xml
