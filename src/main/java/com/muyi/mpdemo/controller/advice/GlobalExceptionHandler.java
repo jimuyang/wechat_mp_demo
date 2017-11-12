@@ -1,12 +1,9 @@
 package com.muyi.mpdemo.controller.advice;
 
-import com.muyi.mpdemo.builder.ResponseData;
+import com.muyi.mpdemo.frame.ResponseData;
 import com.muyi.mpdemo.exception.MpException;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.protocol.ResponseDate;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;

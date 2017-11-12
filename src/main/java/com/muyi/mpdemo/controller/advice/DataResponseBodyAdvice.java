@@ -1,6 +1,6 @@
 package com.muyi.mpdemo.controller.advice;
 
-import com.muyi.mpdemo.builder.ResponseData;
+import com.muyi.mpdemo.frame.ResponseData;
 import com.muyi.mpdemo.enums.ResultEnum;
 import com.muyi.mpdemo.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +8,6 @@ import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
@@ -49,12 +48,12 @@ public class DataResponseBodyAdvice implements ResponseBodyAdvice{
     public boolean supports(MethodParameter methodParameter, Class aClass) {
         //log.info("methodParameter.method.name: {}", methodParameter.getMethod().getName());
         //log.info("methodParameter.methodAnnotations: {}", methodParameter.getMethodAnnotations());
+
         //过滤掉 ExceptionHandler 和 wechat
         if (methodParameter.getMethodAnnotation(ExceptionHandler.class) != null
                 || methodParameter.getMethod().getName().startsWith("wechat")){
             return false;
         }
-        //log.info("class: {}", aClass.getName());
         return true;
     }
 

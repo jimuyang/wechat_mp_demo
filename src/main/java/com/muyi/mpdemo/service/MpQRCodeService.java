@@ -7,6 +7,9 @@ package com.muyi.mpdemo.service;
  */
 public interface MpQRCodeService {
 
+    void getLastMpQRCode(int sceneID);
+
+    void getLastMpQRCode(String sceneStr);
 
 
 

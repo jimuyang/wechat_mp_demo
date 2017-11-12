@@ -17,15 +17,4 @@ public class QRCodeController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 }

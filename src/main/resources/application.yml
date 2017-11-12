@@ -17,6 +17,7 @@ spring:
     view:
       prefix: /templates/
       suffix: .ftl
+    static-path-pattern: /static/**
   freemarker:
     cache: false
     request-context-attribute: request
@@ -54,7 +55,7 @@ mybatis:
 
 mapper:
     mappers:
-        - com.muyi.mpdemo.utils.MyMapper
+        - com.muyi.mpdemo.frame.MyMapper
     not-empty: false
     identity: MYSQL
 

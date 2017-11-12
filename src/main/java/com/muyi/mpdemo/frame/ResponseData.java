@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.builder;
+package com.muyi.mpdemo.frame;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.utils;
+package com.muyi.mpdemo.frame;
 
 
 import tk.mybatis.mapper.common.Mapper;

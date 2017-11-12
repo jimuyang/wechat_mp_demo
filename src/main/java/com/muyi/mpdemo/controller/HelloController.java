@@ -29,7 +29,7 @@ public class HelloController {
     private HttpSession httpSession;
 
 
-    @GetMapping
+    @GetMapping("/hello")
     public String hello(){
         return "hello world";
     }

@@ -27,9 +27,10 @@ import redis.clients.jedis.Jedis;
 @Slf4j
 public class WechatMpConfig {
 
+    final String mingming = "oFqnmwmBEadJwBekobPqkPfo3qsk";
+
     @Autowired
     protected WechatProperties wechatProperties;
-
     @Autowired
     protected LogHandler logHandler;
     @Autowired

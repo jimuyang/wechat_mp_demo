@@ -39,6 +39,7 @@ public class RedisUtilTest {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+
     @Test
     public void test() throws Exception {
         stringRedisTemplate.opsForValue().set("aaa", "111");
@@ -63,7 +64,8 @@ public class RedisUtilTest {
 
         ((WxMpInRedisConfigStorage)wxMpConfigStorage).updateAccessToken("demoToken",200);
         String accessToken = wxMpService.getAccessToken();
-        log.info("Wechat access_token: {}",accessToken);
+        log.info("【Wechat access_token】: {}",accessToken);
+
     }
 
 
