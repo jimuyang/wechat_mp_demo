@@ -39,17 +39,14 @@ public class MpQRCodeServiceImpl implements MpQRCodeService {
         try{
             WxMpQrCodeTicket ticket = wxMpService.getQrcodeService().qrCodeCreateLastTicket(sceneStr);
             log.info("\n【ticket】:{},\n【url】:{},\n【expire_seconds】:{}", ticket.getTicket(), ticket.getUrl(), ticket.getExpire_seconds());
-            //存入本地数据库或Redis
-            
+            //存入本地数据库或
+            saveQRCodeInDB(sceneStr,ticket);
         }catch (WxErrorException e){
             throw new MpException(e);
         }
     }
     
-    private boolean saveQRCodeInRedis(String str,WxMpQrCodeTicket ticket){
-
-        //redisTemplate.opsForValue().set();
-
+    private boolean saveQRCodeInDB(String str,WxMpQrCodeTicket ticket){
         // TODO: 2017/11/12
         return true;
     }

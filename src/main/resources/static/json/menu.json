@@ -1,0 +1,24 @@
+{
+  "button":[
+    {
+      "type":"click",
+      "name":"按钮类型",
+      "key":"btn_001"
+    },
+    {
+      "name":"菜单",
+      "sub_button":[
+        {
+          "type":"view",
+          "name":"百度",
+          "url":"http://www.baidu.com/"
+        },
+        {
+          "type": "scancode_waitmsg",
+          "name": "扫码带提示",
+          "key": "scan_w_001",
+          "sub_button": []
+        }
+      ]
+    }]
+}

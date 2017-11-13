@@ -42,6 +42,7 @@ public class SubscribeHandler extends BaseHandler {
 
         //处理特殊请求，比如如果是扫码进来的，可以做相应处理
         if(StringUtils.startsWith(inMessage.getEventKey(),QRSCENE_PREFIX)){
+
             inMessage.setEventKey(inMessage.getEventKey().replaceFirst(QRSCENE_PREFIX,""));
             return scanHandler.handle(inMessage,map,wxMpService,wxSessionManager);
         }

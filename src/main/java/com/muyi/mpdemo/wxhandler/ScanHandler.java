@@ -26,6 +26,8 @@ public class ScanHandler extends BaseHandler {
 
     public static final String TABLE_SCENE_PREFIX = "Table_";
 
+    public static final String MENU_SCAN_W_001 = "scan_w_001";
+
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMpXmlMessage,
                                     Map<String, Object> map,
@@ -35,11 +37,22 @@ public class ScanHandler extends BaseHandler {
         log.info("======> 发送给路由【ScanHandler】");
 
         WxMpXmlMessage inMessage = wxMpXmlMessage;
-        String scene = inMessage.getEventKey();
+        String eventKey = inMessage.getEventKey();
 
-        if(scene.startsWith(TABLE_SCENE_PREFIX)){
-            //桌号场景,回复一条图文消息
-            String table_shop = scene.replaceFirst(TABLE_SCENE_PREFIX,"");
+        if(eventKey.equals(MENU_SCAN_W_001)){
+            //点击菜单扫码事件
+
+            //判断扫描的是什么二维码
+
+            //将判断出的二维码eventkey塞回，即可做普通扫码事件处理
+
+        }
+
+
+
+        if(eventKey.startsWith(TABLE_SCENE_PREFIX)){
+            //扫描桌号场景,回复一条图文消息
+            String table_shop = eventKey.replaceFirst(TABLE_SCENE_PREFIX,"");
             return new WxTableNewsBuilder().setTable(table_shop).build("",inMessage,wxMpService);
         }
         return null;

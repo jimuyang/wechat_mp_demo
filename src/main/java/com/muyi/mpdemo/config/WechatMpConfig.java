@@ -93,6 +93,8 @@ public class WechatMpConfig {
         newRouter.rule().async(false).msgType(WxConsts.XML_MSG_EVENT)
                 .event(WxConsts.EVT_SCAN).handler(scanHandler)
                 .end();
+        newRouter.rule().async(false).msgType(WxConsts.XML_MSG_EVENT)
+                .event(WxConsts.EVT_SCANCODE_WAITMSG).handler(scanHandler);
 
         //默认
         newRouter.rule().async(false).handler(this.messageHandler).end();
