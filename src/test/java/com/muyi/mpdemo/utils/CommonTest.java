@@ -3,7 +3,9 @@ package com.muyi.mpdemo.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
 
@@ -13,7 +15,6 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CommonTest {
-
 
     @Test
     public void array2List(){
@@ -26,6 +27,15 @@ public class CommonTest {
 
         log.info("String array:{}\nString list:{}",
                 JsonUtil.toJson(array), JsonUtil.toJson(list));
+    }
+
+
+    @Value("${spring.redis.host}")
+    private String redisHost;
+
+    @Test
+    public void test(){
+        log.info("redis.host:{}",redisHost);
     }
 
 

@@ -27,4 +27,5 @@ public class MpQRCodeServiceImplTest {
         mpQRCodeService.getLastMpQRCode(sceneStr);
     }
 
+
 }

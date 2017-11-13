@@ -1,5 +1,7 @@
 package com.muyi.mpdemo.service;
 
+import java.io.IOException;
+
 /**
  * @Author: muyi
  * @Date: Created in 11:15 2017/11/10
@@ -9,7 +11,7 @@ public interface MpQRCodeService {
 
     void getLastMpQRCode(int sceneID);
 
-    void getLastMpQRCode(String sceneStr);
+    void getLastMpQRCode(String sceneStr) throws IOException;
 
 
 
