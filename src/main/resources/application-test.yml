@@ -24,6 +24,14 @@ spring:
   jackson:
 #    default-property-inclusion: non_null
 
+#
+project:
+  url:
+    index: http://muyi.natapp1.cc/mpserver/index
+    authUserInfo: http://muyi.natapp1.cc/mpserver/wechat/web/userInfo
+    webAuth: http://muyi.natapp1.cc/mpserver/wechat/web/authorize
+
+
 
 
 #HoistTheSails公众号管理

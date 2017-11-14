@@ -10,8 +10,8 @@
       "sub_button":[
         {
           "type":"view",
-          "name":"百度",
-          "url":"http://www.baidu.com/"
+          "name":"首页",
+          "url":"http://muyi.natapp1.cc/mpserver/wechat/web/authorize"
         },
         {
           "type": "scancode_waitmsg",
