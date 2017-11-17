@@ -1,5 +1,6 @@
 package com.muyi.mpdemo.config;
 
+import com.muyi.mpdemo.config.properties.RedisProperties;
 import com.muyi.mpdemo.config.properties.WechatProperties;
 import com.muyi.mpdemo.utils.JsonUtil;
 import com.muyi.mpdemo.wxhandler.*;
@@ -23,7 +24,7 @@ import redis.clients.jedis.Jedis;
 
 @Configuration
 @ConditionalOnClass(WxMpService.class)
-@EnableConfigurationProperties({WechatProperties.class})
+@EnableConfigurationProperties({WechatProperties.class, RedisProperties.class})
 @Slf4j
 public class WechatMpConfig {
 
@@ -31,6 +32,9 @@ public class WechatMpConfig {
 
     @Autowired
     protected WechatProperties wechatProperties;
+    @Autowired
+    protected RedisProperties redisProperties;
+
     @Autowired
     protected LogHandler logHandler;
     @Autowired
@@ -50,13 +54,13 @@ public class WechatMpConfig {
 //        wxMpConfigStorage.setAppId(this.wechatProperties.getMp().getAppId());
 //        wxMpConfigStorage.setSecret(this.wechatProperties.getMp().getAppSecret());
 
-        wxMpConfigStorage.setAppId(this.wechatProperties.getMptest().getAppId());
-        wxMpConfigStorage.setSecret(this.wechatProperties.getMptest().getAppSecret());
+        wxMpConfigStorage.setAppId(this.wechatProperties.getMp().getAppId());
+        wxMpConfigStorage.setSecret(this.wechatProperties.getMp().getAppSecret());
 
         wxMpConfigStorage.setAesKey(this.wechatProperties.getServer().getEncodingAESKey());
         wxMpConfigStorage.setToken(this.wechatProperties.getServer().getToken());
 
-        Jedis jedis = new Jedis("localhost",6379);
+        Jedis jedis = new Jedis(redisProperties.getHost(),redisProperties.getPort());
         wxMpConfigStorage.setJedis(jedis);
 
         //log.info("WxMpConfigStorage: {}",JsonUtil.toJson(wxMpConfigStorage));

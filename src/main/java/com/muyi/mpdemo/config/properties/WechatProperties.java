@@ -17,14 +17,6 @@ public class WechatProperties {
     private Server server;
     private Pay pay;
     private Open open;
-    private Mptest mptest;
-
-
-    @Data
-    public static class Mptest{
-        private String appId;
-        private String appSecret;
-    }
 
     @Data
     public static class Mp{

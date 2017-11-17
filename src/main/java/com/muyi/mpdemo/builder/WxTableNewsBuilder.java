@@ -7,6 +7,13 @@ import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutNewsMessage;
 import me.chanjar.weixin.mp.builder.outxml.NewsBuilder;
 
+/**
+ * @Author: muyi
+ * @Date: Created in 13:20 2017/11/8
+ * @Description: 微信桌号扫描图文消息Builder
+ */
+
+
 @Slf4j
 public class WxTableNewsBuilder extends WxAbstractBuilder {
 

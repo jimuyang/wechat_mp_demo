@@ -1,6 +1,7 @@
 package com.muyi.mpdemo.controller;
 
 import com.muyi.mpdemo.config.properties.ProjectProperties;
+import com.muyi.mpdemo.config.properties.RedisProperties;
 import com.muyi.mpdemo.config.properties.WechatProperties;
 import com.muyi.mpdemo.exception.MpException;
 import com.muyi.mpdemo.utils.JsonUtil;
@@ -30,6 +31,7 @@ import java.net.URLEncoder;
 @Slf4j
 @Controller
 @RequestMapping("/wechat/web")
+@EnableConfigurationProperties(ProjectProperties.class)
 public class WechatAuthController {
 
     @Autowired
@@ -38,29 +40,26 @@ public class WechatAuthController {
     @Autowired
     private WxMpService wxMpService;
 
-    @Value("${project.url.authUserInfo}")
-    private String authUserInfoUrl;
-
-    @Value("${project.url.index}")
-    private String indexUrl;
+    @Autowired
+    private ProjectProperties projectProperties;
 
     @GetMapping("/authorize")
     public String wechatAuth(){
         String sessionID = httpSession.getId();
-        log.info("【/authorize->sessionID】:{}",sessionID);
+        //log.info("【/authorize->sessionID】:{}",sessionID);
 
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl
-                (authUserInfoUrl, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(sessionID));
+                        (projectProperties.getUrl().getAuthUserInfo(),
+                         WxConsts.OAUTH2_SCOPE_USER_INFO,
+                         URLEncoder.encode(sessionID));
         return "redirect:" + redirectUrl;
     }
 
     @GetMapping("/userInfo")
     public String wechatIndex(@RequestParam("code") String code,
-                           @RequestParam("state") String sessionID){
+                           @RequestParam("state") String sessionID) throws MpException{
 
         String ss = httpSession.getId();
-        log.info("【/userInfo->sessionID】:{}",ss);
-        log.info("【/authorize->sessionID】:{}",sessionID);
 
         WxMpOAuth2AccessToken wxMpOAuth2AccessToken = new WxMpOAuth2AccessToken();
         try{
@@ -74,7 +73,7 @@ public class WechatAuthController {
         }
         String openID = wxMpOAuth2AccessToken.getOpenId();
 
-        return "redirect:" + indexUrl + "?openID=" + openID;
+        return "redirect:" + projectProperties.getUrl().getIndex() + "?openID=" + openID;
     }
 
 

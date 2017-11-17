@@ -1,5 +1,7 @@
 package com.muyi.mpdemo.service;
 
+import com.muyi.mpdemo.exception.MpException;
+
 import java.io.IOException;
 
 /**
@@ -9,9 +11,9 @@ import java.io.IOException;
  */
 public interface MpQRCodeService {
 
-    void getLastMpQRCode(int sceneID);
+    void getLastMpQRCode(int sceneID) throws MpException;
 
-    void getLastMpQRCode(String sceneStr) throws IOException;
+    void getLastMpQRCode(String sceneStr) throws IOException,MpException;
 
 
 

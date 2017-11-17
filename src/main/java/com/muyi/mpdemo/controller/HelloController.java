@@ -1,6 +1,8 @@
 package com.muyi.mpdemo.controller;
 
 import com.muyi.mpdemo.domain.TestUser;
+import com.muyi.mpdemo.exception.MpException;
+import com.muyi.mpdemo.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.ResolverUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +26,11 @@ import java.util.Map;
 @Slf4j
 public class HelloController {
 
-
     @Autowired
     private HttpSession httpSession;
+
+    @Autowired
+    private TestService testService;
 
 
     @GetMapping("/hello")
@@ -53,8 +57,11 @@ public class HelloController {
     }
 
     @GetMapping("/exception")
-    public TestUser exceptionTest(){
-        int i = 5/0;
+    public TestUser exceptionTest() throws Exception{
+        //int i = 5/0;
+        //throw new MpException(134,"sfs");
+        //throw new Exception("ssfsdfsdfs");
+        testService.test();
         return null;
     }
 

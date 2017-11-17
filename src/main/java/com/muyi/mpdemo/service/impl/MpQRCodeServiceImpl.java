@@ -1,5 +1,6 @@
 package com.muyi.mpdemo.service.impl;
 
+import com.muyi.mpdemo.config.properties.WechatProperties;
 import com.muyi.mpdemo.exception.MpException;
 import com.muyi.mpdemo.service.MpQRCodeService;
 import com.sun.javafx.binding.StringFormatter;
@@ -26,13 +27,13 @@ import java.io.IOException;
  */
 @Slf4j
 @Service("mpQRCodeService")
-public class MpQRCodeServiceImpl implements MpQRCodeService {
+public class MpQRCodeServiceImpl implements MpQRCodeService  {
 
     @Autowired
     private WxMpService wxMpService;
 
 
-    public void getLastMpQRCode(int sceneID){
+    public void getLastMpQRCode(int sceneID) throws MpException{
         try{
             WxMpQrCodeTicket ticket = wxMpService.getQrcodeService().qrCodeCreateLastTicket(sceneID);
             log.info("\n【ticket】:{},\n【url】:{},\n【expire_seconds】:{}",ticket.getTicket(),ticket.getUrl(),ticket.getExpire_seconds());
@@ -41,7 +42,7 @@ public class MpQRCodeServiceImpl implements MpQRCodeService {
         }
     }
 
-    public void getLastMpQRCode(String sceneStr) throws IOException{
+    public void getLastMpQRCode(String sceneStr) throws IOException,MpException{
         try{
             WxMpQrCodeTicket ticket = wxMpService.getQrcodeService().qrCodeCreateLastTicket(sceneStr);
             log.info("\n【ticket】:{},\n【url】:{},\n【expire_seconds】:{}", ticket.getTicket(), ticket.getUrl(), ticket.getExpire_seconds());

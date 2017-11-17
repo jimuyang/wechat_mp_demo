@@ -14,13 +14,11 @@ public class ProjectProperties {
 
     private Url url;
 
-
-
-
     @Data
     public static class Url{
-        private String webIndex;
-        private String userInfo;
+        private String index;
+        private String authUserInfo;
+        private String webAuth;
     }
 
 

@@ -30,7 +30,7 @@ public class MpUserManageServiceImpl implements MpUserManageService {
             WxUserTag wxUserTag = wxMpService.getUserTagService().tagCreate(tag);
             log.info(JsonUtil.toJson(wxUserTag));
 
-        }catch (WxErrorException e ){
+        }catch (WxErrorException e){
             throw new MpException(e);
         }
         return true;

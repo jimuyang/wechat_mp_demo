@@ -35,7 +35,6 @@ public class MpMenuServiceImpl implements MpMenuService {
     public boolean createDefaultMenu() throws IOException{
 
         WxMpMenuService menuService = wxMpService.getMenuService();
-        WxMpMenu menu;
 
         try{
             //创建默认菜单

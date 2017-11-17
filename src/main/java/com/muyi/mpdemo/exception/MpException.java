@@ -8,23 +8,13 @@ import me.chanjar.weixin.common.exception.WxErrorException;
 /**
  * @Author: muyi
  * @Date: Created in 12:50 2017/11/9
- * @Description:
+ * @Description: 公众号相关异常
  */
 
 @Data
 public class MpException extends RuntimeException {
 
     private int code;
-
-    public MpException(ResultEnum resultEnum){
-        super(resultEnum.getMessage());
-        this.code = resultEnum.getCode();
-    }
-
-    public MpException(int code,String message){
-        super(message);
-        this.code = code;
-    }
 
     public MpException(int code){
         super();
