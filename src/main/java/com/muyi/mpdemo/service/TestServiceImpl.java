@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.service.impl;
+package com.muyi.mpdemo.service;
 
 import com.muyi.mpdemo.enums.ResultEnum;
 import com.muyi.mpdemo.exception.BizException;

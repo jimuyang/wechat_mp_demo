@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.service;
+package com.muyi.mpdemo.service.mpback;
 
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.mp.bean.menu.WxMpMenu;

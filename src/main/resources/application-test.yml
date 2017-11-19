@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/mpdemo?characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/mpdemo?useSSL=true&allowMultiQueries=true
   redis:
     database: 0
     host: localhost
@@ -31,17 +31,11 @@ project:
     authUserInfo: http://muyi.natapp1.cc/mpserver/wechat/web/userInfo
     webAuth: http://muyi.natapp1.cc/mpserver/wechat/web/authorize
 
-
-
-
 #公众平台测试号
 wechat:
   mp:
     appId: wxebc5ad283406f8f7
     appSecret: 2cc1350ab9592dd8609540eee33dc6f2
-#  mp:
-#    appId: wx089e473e49a0b9bc
-#    appSecret: 9b477fe08f7796150833276a419906f2
   server:
     url: http://muyi.natapp1.cc/mpserver/wechat/portal
     token: muyimptoken
@@ -59,14 +53,16 @@ wechat:
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 #  config-location: classpath:mybatis/mybatis-config.xml
-  type-aliases-package: com.muyi.mpdemo.view
+  type-aliases-package: com.muyi.mpdemo.domain
 
+#通用mapper
 mapper:
     mappers:
         - com.muyi.mpdemo.frame.MyMapper
     not-empty: false
     identity: MYSQL
 
+#mybatis分页插件
 pagehelper:
     helperDialect: mysql
     reasonable: true

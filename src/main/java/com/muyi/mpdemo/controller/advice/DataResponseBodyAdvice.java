@@ -1,6 +1,5 @@
 package com.muyi.mpdemo.controller.advice;
 
-import com.muyi.mpdemo.frame.ResponseData;
 import com.muyi.mpdemo.enums.ResultEnum;
 import com.muyi.mpdemo.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +50,8 @@ public class DataResponseBodyAdvice implements ResponseBodyAdvice{
 
         //过滤掉 ExceptionHandler 和 wechat
         if (methodParameter.getMethodAnnotation(ExceptionHandler.class) != null
-                || methodParameter.getMethod().getName().startsWith("wechat")){
+                || methodParameter.getMethod().getName().startsWith("wechat")
+                || methodParameter.getMethod().getName().equals("noMapping")){
             return false;
         }
         return true;

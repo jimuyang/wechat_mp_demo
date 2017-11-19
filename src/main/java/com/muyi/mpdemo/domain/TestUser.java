@@ -12,10 +12,7 @@ import java.io.Serializable;
 
 @Data
 public class TestUser implements Serializable{
-
     private String userID;
     private String username;
     private String password;
-
-
 }

@@ -6,10 +6,7 @@ import com.muyi.mpdemo.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.ResolverUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,6 +20,7 @@ import java.util.Map;
  */
 
 @RestController
+@RequestMapping("/hello")
 @Slf4j
 public class HelloController {
 
@@ -32,8 +30,7 @@ public class HelloController {
     @Autowired
     private TestService testService;
 
-
-    @GetMapping("/hello")
+    @GetMapping("/")
     public String hello(){
         return "hello world";
     }
@@ -67,7 +64,7 @@ public class HelloController {
 
 
     @GetMapping("/str")
-    public String getString(){
+    public String getString(@RequestParam("param")String param){
         return "ssssss";
     }
 

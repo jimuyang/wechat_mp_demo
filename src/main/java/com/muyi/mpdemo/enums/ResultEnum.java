@@ -9,11 +9,14 @@ import lombok.Getter;
  */
 
 @Getter
-public enum ResultEnum {
+public enum ResultEnum implements CodeEnum {
 
     SUCCESS(0,"success"),
 
     USER_NOT_FOUND(1,"用户找不到"),
+    LOGIN_FIRST(2,"请先登录！"),
+    LOGIN_FAILED(3,"登录失败！"),
+
 
     ;
 

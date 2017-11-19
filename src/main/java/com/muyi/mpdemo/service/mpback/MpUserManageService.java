@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.service;
+package com.muyi.mpdemo.service.mpback;
 
 import me.chanjar.weixin.mp.bean.WxMpUserQuery;
 import me.chanjar.weixin.mp.bean.result.WxMpUser;

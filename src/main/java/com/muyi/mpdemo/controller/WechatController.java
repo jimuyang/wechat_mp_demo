@@ -1,5 +1,6 @@
 package com.muyi.mpdemo.controller;
 
+import com.muyi.mpdemo.exception.MpException;
 import com.muyi.mpdemo.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
@@ -40,7 +41,7 @@ public class WechatController {
     @Autowired
     private WxMpMessageRouter wxMpMessageRouter;
 
-    @GetMapping(produces = "text/plain;charset=utf-8")
+    @GetMapping//(produces = "text/plain;charset=utf-8")
     public String wechatAuthGet(@RequestParam(SIGNATURE) String signature,
                                 @RequestParam(TIMESTAMP) String timestamp,
                                 @RequestParam(NONCE) String nonce,
@@ -50,7 +51,7 @@ public class WechatController {
                 signature,timestamp,nonce,echostr);
 
         if(StringUtils.isAnyBlank(signature,timestamp,nonce,echostr)){
-            throw new IllegalArgumentException("请求参数不合法，请核实");
+            throw new MpException(0,"请求参数不合法。");
         }
 
         if(this.wxMpService.checkSignature(timestamp,nonce,signature)){
@@ -63,7 +64,7 @@ public class WechatController {
     }
 
 
-    @PostMapping(produces = "application/xml; charset=UTF-8")
+    @PostMapping//(produces = "application/xml; charset=UTF-8")
     public String wechatPostMsg(@RequestBody String requestBody,
                                 @RequestParam(SIGNATURE) String signature,
                                 @RequestParam(TIMESTAMP) String timestamp,

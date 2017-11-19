@@ -1,21 +1,14 @@
-package com.muyi.mpdemo.service.impl;
+package com.muyi.mpdemo.service.mpback.impl;
 
-import com.muyi.mpdemo.config.properties.WechatProperties;
 import com.muyi.mpdemo.exception.MpException;
-import com.muyi.mpdemo.service.MpQRCodeService;
-import com.sun.javafx.binding.StringFormatter;
+import com.muyi.mpdemo.service.mpback.MpQRCodeService;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.result.WxMpQrCodeTicket;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.ClassPathUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.PathResource;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
-import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.io.IOException;

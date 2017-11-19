@@ -1,7 +1,7 @@
-package com.muyi.mpdemo.service.impl;
+package com.muyi.mpdemo.service.mpback.impl;
 
 import com.muyi.mpdemo.exception.MpException;
-import com.muyi.mpdemo.service.MpMenuService;
+import com.muyi.mpdemo.service.mpback.MpMenuService;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpMenuService;

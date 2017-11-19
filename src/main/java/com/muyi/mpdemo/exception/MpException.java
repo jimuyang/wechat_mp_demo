@@ -16,8 +16,8 @@ public class MpException extends RuntimeException {
 
     private int code;
 
-    public MpException(int code){
-        super();
+    public MpException(int code,String message){
+        super(message);
         this.code = code;
     }
 

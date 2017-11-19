@@ -38,5 +38,12 @@ public class CommonTest {
         log.info("redis.host:{}",redisHost);
     }
 
+    @Test
+    public void uuidTest(){
+        for (int i = 0; i < 100 ; i++) {
+            log.info(KeyUtil.UUID());
+        }
+    }
+
 
 }
