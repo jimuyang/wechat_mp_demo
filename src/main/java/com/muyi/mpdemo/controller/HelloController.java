@@ -35,10 +35,8 @@ public class HelloController {
         return "hello world";
     }
 
-
     @GetMapping("/session/{userID}")
     public String sessionTest(HttpSession session, @PathVariable(name = "userID") String userID){
-
         log.info("当前sessionID: {}, userID: {}",httpSession.getId(),userID);
         httpSession.setAttribute("pass","username");
         return "";
@@ -77,12 +75,6 @@ public class HelloController {
     public boolean getBoolean(){
         return true;
     }
-
-
-
-
-
-
 
 
 }

@@ -13,7 +13,7 @@ public enum OrderStatusEnum implements CodeEnum {
     QUEUEING(4,"叫号中"),
     DELIVERING(5,"送餐中"),
 
-    CANCELED(6,"已取消"),
+    CANCELLED(6,"已取消"),
 
     ;
 

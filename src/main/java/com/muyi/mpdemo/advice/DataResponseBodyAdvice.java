@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.controller.advice;
+package com.muyi.mpdemo.advice;
 
 import com.muyi.mpdemo.enums.ResultEnum;
 import com.muyi.mpdemo.utils.JsonUtil;

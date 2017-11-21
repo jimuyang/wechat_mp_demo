@@ -8,9 +8,10 @@ public enum OrderOperationEnum implements CodeEnum {
     CREATE(0,""),
     PAY(1,""),
     ACCEPT(2,""),
-
-
-
+    CANCEl(2,""),
+    QUEUE(2,""),
+    COMPLETE(2,""),
+    
     ;
 
     private int code;

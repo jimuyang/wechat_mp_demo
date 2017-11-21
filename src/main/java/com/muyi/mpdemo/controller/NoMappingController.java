@@ -1,15 +1,17 @@
 package com.muyi.mpdemo.controller;
 
 
-import com.muyi.mpdemo.controller.advice.ResponseData;
-import lombok.extern.slf4j.Slf4j;
+import com.muyi.mpdemo.advice.ResponseData;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
-@RestController
-@RequestMapping("/**")
+/**
+ * 这样实现后居然也拦截的访问静态资源的url
+ * 很要命
+ */
+
+//@Slf4j
+//@RestController
+//@RequestMapping("/**")
 public class NoMappingController {
 
     @GetMapping
