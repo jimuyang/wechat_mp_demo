@@ -5,12 +5,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Enumeration;
 
@@ -24,7 +26,7 @@ import java.util.Enumeration;
 @Component
 public class WebLogAspect {
 
-    @Pointcut("execution(public * com.muyi.mpdemo.controller..*(..))")
+    @Pointcut("execution(public * com.muyi.mpdemo.controller.*.*(..))")
     public void webLog(){
     }
 
@@ -35,9 +37,9 @@ public class WebLogAspect {
 
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-
         //记录请求内容
         log.info("【收到web请求】{}:{}",request.getMethod(),request.getRequestURL().toString());
+
         //获取所有参数方法一：
         StringBuilder stringBuilder = new StringBuilder();
         Enumeration<String> enu = request.getParameterNames();
@@ -49,7 +51,9 @@ public class WebLogAspect {
         log.info("             PARAMS:{}",stringBuilder.toString());
         //log.info("IP:{}",request.getRemoteAddr());
         log.info("CLASS_METHOD:{} ",joinPoint.getSignature().getDeclaringTypeName() + "..." + joinPoint.getSignature().getName());
-        //log.info("ARGS:{}",Arrays.toString(joinPoint.getArgs()));
+
+        MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
+        Method method = methodSignature.getMethod();
 
     }
 
@@ -59,13 +63,6 @@ public class WebLogAspect {
         //处理完请求
         //log.info("【AfterReturning】...");
         log.info("【AfterReturning】result:{}",JsonUtil.toJson(result));
-//        log.info("【AfterReturning】toLongString:{}",joinPoint.toLongString());
-//        log.info("【AfterReturning】getSignature:{}",joinPoint.getSignature());
-//        log.info("【AfterReturning】getArgs:{}",JsonUtil.toPrettyJson(joinPoint.getArgs()));
-//        log.info("【AfterReturning】getKind:{}",JsonUtil.toPrettyJson(joinPoint.getKind()));
-//        log.info("【AfterReturning】getSourceLocation:{}",JsonUtil.toPrettyJson(joinPoint.getSourceLocation()));
-//        log.info("【AfterReturning】getTarget:{}",JsonUtil.toPrettyJson(joinPoint.getTarget()));
-        //log.info("【AfterReturning】getThis:{}",JsonUtil.toPrettyJson(joinPoint.getThis()));
 
     }
 

@@ -10,9 +10,10 @@ import java.math.BigDecimal;
 @Data
 public class Buyer {
 
-//    @Id
-//    @Column(name = "userID")
     private String buyerID;
+
+    private String openID;
+    private String unionID;
 
     private String buyerName;
 

@@ -1,7 +1,7 @@
 package com.muyi.mpdemo.controller;
 
 
-import com.muyi.mpdemo.advice.ResponseData;
+import com.muyi.mpdemo.controller.advice.ResponseData;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**

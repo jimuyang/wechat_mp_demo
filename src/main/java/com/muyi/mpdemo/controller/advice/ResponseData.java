@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.advice;
+package com.muyi.mpdemo.controller.advice;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

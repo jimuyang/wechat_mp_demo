@@ -22,7 +22,7 @@ public class LoginController {
     private HttpSession httpSession;
 
     @GetMapping
-    public boolean headLogin(@RequestParam("userID")String userID,
+    public boolean login(@RequestParam("userID")String userID,
                              @RequestParam("password")String password){
 
         //String userID = request.getHeader("userID");
