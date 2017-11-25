@@ -23,7 +23,7 @@ public class LoginController {
 
     @GetMapping
     public boolean login(@RequestParam("userID")String userID,
-                             @RequestParam("password")String password){
+                         @RequestParam("password")String password){
 
         //String userID = request.getHeader("userID");
         //String password = request.getHeader("password");

@@ -63,7 +63,7 @@ public class HelloController {
 
     @GetMapping("/str")
     public String getString(@RequestParam("param")String param){
-        return "ssssss";
+        return testService.test();
     }
 
     @GetMapping("/null")

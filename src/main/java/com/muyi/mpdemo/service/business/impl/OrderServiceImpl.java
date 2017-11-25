@@ -1,6 +1,6 @@
 package com.muyi.mpdemo.service.business.impl;
 
-import com.muyi.mpdemo.HttpSessionAdvice;
+import com.muyi.mpdemo.frame.HttpSessionAdvice;
 import com.muyi.mpdemo.dao.OrderDao;
 import com.muyi.mpdemo.domain.OrderHead;
 import com.muyi.mpdemo.dto.CreateOrderReq;
@@ -28,6 +28,11 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
+    public OrderHead getOrderInfo(String orderID) {
+        return orderDao.selectOne(orderID);
+    }
+
+    @Override
     public String createOrder(CreateOrderReq coReq) {
         OrderHead orderHead = new OrderHead();
         //生成订单ID
@@ -50,7 +55,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean payOrder(String orderID) {
-
         return false;
     }
 }

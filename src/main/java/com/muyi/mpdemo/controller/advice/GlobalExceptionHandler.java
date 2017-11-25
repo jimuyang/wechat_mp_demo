@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = BizException.class)
     public ResponseData bizExceptionHandler(HttpServletRequest request, BizException be){
 
-        log.error("BizException Occured:{}:{}",be.getBizCode(),be.getMessage());
+        log.error("【BizException Occured】{}:{}",be.getBizCode(),be.getMessage());
         //log.error("         Stack Trace:{}", JsonUtil.toPrettyJson(be.getStackTrace()));
         ResponseData responseData = new ResponseData();
         responseData.setCode(be.getBizCode());
@@ -37,17 +37,14 @@ public class GlobalExceptionHandler {
         return responseData;
     }
 
-
-
     /**
      * 公众号异常处理
      */
     @ExceptionHandler(value = MpException.class)
     public ResponseData mpExceptionHandler(HttpServletRequest request, MpException mpe){
 
-        log.error("MpException Occured:{}",mpe.getMessage());
+        log.error("【MpException Occured】{}",mpe.getMessage());
         //log.error("        Stack Trace:{}", JsonUtil.toPrettyJson(mpe.getStackTrace()));
-
         ResponseData responseData = new ResponseData();
         responseData.setCode(mpe.getCode());
         responseData.setMessage(mpe.getMessage());
@@ -61,24 +58,20 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     public ResponseData sysExceptionHandler(HttpServletRequest request,Exception e){
-        log.error("SysException Occured:{}", e.getMessage());
+        log.error("【SysException Occured】{}", e.getMessage());
         //log.error("         Stack Trace:{}", e.getStackTrace());
-
         ResponseData responseData = new ResponseData();
         responseData.setMessage(e.getMessage());
         responseData.setStatus(false);
         responseData.setData(null);
-        if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
-            responseData.setCode(404);
-        } else {
-            responseData.setCode(500);
-        }
+//        if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
+//            responseData.setCode(404);
+//        } else {
+//            responseData.setCode(500);
+//        }
         return responseData;
 
     }
-
-
-
 
 
 }

@@ -1,7 +1,7 @@
 package com.muyi.mpdemo.service.impl;
 
 import com.muyi.mpdemo.service.mpback.MpQRCodeService;
-import com.muyi.mpdemo.wxhandler.ScanHandler;
+import com.muyi.mpdemo.wechat.handler.ScanHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

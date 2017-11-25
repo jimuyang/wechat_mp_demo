@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.wxhandler;
+package com.muyi.mpdemo.wechat.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.exception.WxErrorException;

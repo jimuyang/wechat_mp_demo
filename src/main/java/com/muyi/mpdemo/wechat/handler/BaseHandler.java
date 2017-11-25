@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.wxhandler;
+package com.muyi.mpdemo.wechat.handler;
 
 import me.chanjar.weixin.mp.api.WxMpMessageHandler;
 

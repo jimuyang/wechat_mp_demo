@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.builder;
+package com.muyi.mpdemo.wechat.builder;
 
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;

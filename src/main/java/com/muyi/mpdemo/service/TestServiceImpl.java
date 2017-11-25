@@ -1,8 +1,5 @@
 package com.muyi.mpdemo.service;
 
-import com.muyi.mpdemo.enums.ResultEnum;
-import com.muyi.mpdemo.exception.BizException;
-import com.muyi.mpdemo.service.TestService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,7 +10,8 @@ import org.springframework.stereotype.Service;
 @Service("testService")
 public class TestServiceImpl implements TestService {
     @Override
-    public void test() {
-        throw new BizException(ResultEnum.USER_NOT_FOUND);
+    public String test() {
+        return "test";
+        //throw new BizException(ResultEnum.USER_NOT_FOUND);
     }
 }

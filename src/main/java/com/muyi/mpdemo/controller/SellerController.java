@@ -1,5 +1,10 @@
 package com.muyi.mpdemo.controller;
 
+/**
+ * @Author: muyi
+ * @Date: Created in 11:05 2017/11/22
+ * @Description:
+ */
 public class SellerController {
 
     //查看订单列表
@@ -15,5 +20,4 @@ public class SellerController {
     //完结订单
 
     //废弃订单
-
 }

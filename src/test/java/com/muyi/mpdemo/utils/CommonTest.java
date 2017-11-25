@@ -1,5 +1,6 @@
 package com.muyi.mpdemo.utils;
 
+import com.muyi.mpdemo.dto.CreateOrderReq;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,6 +44,12 @@ public class CommonTest {
         for (int i = 0; i < 100 ; i++) {
             log.info(KeyUtil.UUID());
         }
+    }
+
+    @Test
+    public void json(){
+        log.info(JsonUtil.toPrettyJson(
+                new CreateOrderReq()));
     }
 
 

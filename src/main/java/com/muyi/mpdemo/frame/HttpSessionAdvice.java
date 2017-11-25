@@ -1,4 +1,4 @@
-package com.muyi.mpdemo;
+package com.muyi.mpdemo.frame;
 
 
 import com.muyi.mpdemo.enums.ResultEnum;

@@ -7,7 +7,7 @@ package com.muyi.mpdemo.service;
  */
 public interface TestService {
 
-    void test();
+    String test();
 
 
 

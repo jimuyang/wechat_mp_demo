@@ -1,5 +1,6 @@
 package com.muyi.mpdemo.service.business;
 
+import com.muyi.mpdemo.domain.OrderHead;
 import com.muyi.mpdemo.dto.CreateOrderReq;
 
 /**
@@ -10,6 +11,7 @@ import com.muyi.mpdemo.dto.CreateOrderReq;
 public interface OrderService {
 
     //获取订单详情
+    OrderHead getOrderInfo(String orderID);
 
     //buyer获取订单列表
 

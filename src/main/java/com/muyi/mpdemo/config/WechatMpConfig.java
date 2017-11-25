@@ -2,14 +2,12 @@ package com.muyi.mpdemo.config;
 
 import com.muyi.mpdemo.config.properties.RedisProperties;
 import com.muyi.mpdemo.config.properties.WechatProperties;
-import com.muyi.mpdemo.utils.JsonUtil;
-import com.muyi.mpdemo.wxhandler.*;
+import com.muyi.mpdemo.wechat.handler.*;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.mp.api.*;
 import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -34,6 +32,8 @@ public class WechatMpConfig {
     protected WechatProperties wechatProperties;
     @Autowired
     protected RedisProperties redisProperties;
+    @Autowired
+    protected Jedis jedis;
 
     @Autowired
     protected LogHandler logHandler;
@@ -60,8 +60,7 @@ public class WechatMpConfig {
         wxMpConfigStorage.setAesKey(this.wechatProperties.getServer().getEncodingAESKey());
         wxMpConfigStorage.setToken(this.wechatProperties.getServer().getToken());
 
-        Jedis jedis = new Jedis(redisProperties.getHost(),redisProperties.getPort());
-        wxMpConfigStorage.setJedis(jedis);
+        wxMpConfigStorage.setJedis(this.jedis);
 
         //log.info("WxMpConfigStorage: {}",JsonUtil.toJson(wxMpConfigStorage));
         return wxMpConfigStorage;

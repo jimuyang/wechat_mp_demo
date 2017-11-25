@@ -1,6 +1,7 @@
 package com.muyi.mpdemo.utils;
 
 import com.muyi.mpdemo.domain.TestUser;
+import com.muyi.mpdemo.listener.RedisMsgPubSubListener;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpInRedisConfigStorage;
@@ -13,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
+import redis.clients.jedis.Jedis;
 
 import static org.junit.Assert.*;
 
@@ -26,6 +28,9 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @Slf4j
 public class RedisUtilTest {
+
+    @Autowired
+    private Jedis jedis;
 
     @Autowired
     private WxMpService wxMpService;
@@ -65,6 +70,13 @@ public class RedisUtilTest {
         ((WxMpInRedisConfigStorage)wxMpConfigStorage).updateAccessToken("demoToken",200);
         String accessToken = wxMpService.getAccessToken();
         log.info("【Wechat access_token】: {}",accessToken);
+
+    }
+
+    @Test
+    public void testRedisExpire(){
+        RedisMsgPubSubListener listener = new RedisMsgPubSubListener();
+        jedis.subscribe(listener,"__keyevent@0__:expired");
 
     }
 

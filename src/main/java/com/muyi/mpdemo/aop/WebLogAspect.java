@@ -27,10 +27,9 @@ import java.util.Enumeration;
 public class WebLogAspect {
 
     @Pointcut("execution(public * com.muyi.mpdemo.controller.*.*(..))")
-    public void webLog(){
-    }
+    public void webLog(){ }
 
-    @Before("webLog()")
+    //@Before("webLog()")
     public void doBefore(JoinPoint joinPoint){
         //接收到请求，log请求内容
         //log.info("WebLogAspect.doBefore()");
@@ -58,7 +57,7 @@ public class WebLogAspect {
     }
 
 
-    @AfterReturning(value = "webLog()",returning = "result")
+    //@AfterReturning(value = "webLog()",returning = "result")
     public void doAfterReturning(JoinPoint joinPoint,Object result){
         //处理完请求
         //log.info("【AfterReturning】...");
@@ -66,16 +65,35 @@ public class WebLogAspect {
 
     }
 
-    //@Around("webLog()")
+    @Around("webLog()")
     public Object aroundLog(ProceedingJoinPoint pjp) throws Throwable {
         //log.info("【aroundLog】:");
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+
+        //记录请求参数
+        StringBuilder stringBuilder = new StringBuilder();
+        Enumeration<String> enu = request.getParameterNames();
+        while (enu.hasMoreElements()) {
+            String paraName = enu.nextElement();
+            stringBuilder.append(paraName + " :" + request.getParameter(paraName) + ", ");
+        }
+
+        //记录请求内容
+        log.info("【WebRequest   】{}",request.getMethod());
+        log.info("【RequestParams】{}",request.getRequestURL().toString(),stringBuilder.toString());
+
         //获取参数
         Object[] args = pjp.getArgs();
+        StringBuilder argsBuilder = new StringBuilder();
         for (Object o: args) {
-            log.info("【aroundLog】arg:{}",o.toString());
+            argsBuilder.append(o.toString());
         }
+
+        log.info("【ControllerLog】method:{}",pjp.getSignature().getDeclaringTypeName() + "..." + pjp.getSignature().getName());
+        log.info("【ControllerLog】args  :{}",argsBuilder.toString());
         Object result = pjp.proceed();
-        log.info("【aroundLog】result:{}",result.toString());
+        log.info("【ControllerLog】result:{}",JsonUtil.toJson(result));
         return result;
     }
 

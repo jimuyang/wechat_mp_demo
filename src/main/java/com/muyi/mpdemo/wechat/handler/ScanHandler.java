@@ -1,15 +1,12 @@
-package com.muyi.mpdemo.wxhandler;
+package com.muyi.mpdemo.wechat.handler;
 
-import com.muyi.mpdemo.builder.WxTableNewsBuilder;
-import javafx.scene.control.Tab;
+import com.muyi.mpdemo.wechat.builder.WxTableNewsBuilder;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

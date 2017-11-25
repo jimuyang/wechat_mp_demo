@@ -1,4 +1,4 @@
-package com.muyi.mpdemo.builder;
+package com.muyi.mpdemo.wechat.builder;
 
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.mp.api.WxMpService;

@@ -1,7 +1,6 @@
-package com.muyi.mpdemo.wxhandler;
+package com.muyi.mpdemo.wechat.handler;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
-import com.muyi.mpdemo.builder.WxTextBuilder;
+import com.muyi.mpdemo.wechat.builder.WxTextBuilder;
 import com.muyi.mpdemo.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.api.WxConsts;
