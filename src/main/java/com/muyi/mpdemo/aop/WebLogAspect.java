@@ -80,18 +80,18 @@ public class WebLogAspect {
         }
 
         //记录请求内容
-        log.info("【WebRequest   】{}",request.getMethod());
-        log.info("【RequestParams】{}",request.getRequestURL().toString(),stringBuilder.toString());
+        log.info("【WebRequest   】{}   {}",request.getMethod(),request.getRequestURL().toString());
+        log.info("【RequestParams】{}",stringBuilder.toString());
 
         //获取参数
         Object[] args = pjp.getArgs();
         StringBuilder argsBuilder = new StringBuilder();
-        for (Object o: args) {
-            argsBuilder.append(o.toString());
-        }
+//        for (Object o: args) {
+//            argsBuilder.append(o.toString());
+//        }
 
         log.info("【ControllerLog】method:{}",pjp.getSignature().getDeclaringTypeName() + "..." + pjp.getSignature().getName());
-        log.info("【ControllerLog】args  :{}",argsBuilder.toString());
+        log.info("【ControllerLog】args  :{}",JsonUtil.toJson(args));
         Object result = pjp.proceed();
         log.info("【ControllerLog】result:{}",JsonUtil.toJson(result));
         return result;

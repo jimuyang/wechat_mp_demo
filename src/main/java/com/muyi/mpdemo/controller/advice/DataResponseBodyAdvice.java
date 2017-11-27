@@ -35,10 +35,10 @@ public class DataResponseBodyAdvice implements ResponseBodyAdvice{
         data.setStatus(true);
         //解决无法返回string类型的问题
         if(methodParameter.getMethod().getReturnType().equals(String.class)){
-            log.info("返回结果为：{}",JsonUtil.toJson(data));
+            log.info("【统一返回结果】{}",JsonUtil.toJson(data));
             return JsonUtil.toPrettyJson(data);
         }
-        log.info("返回结果为：{}",JsonUtil.toJson(data));
+        log.info("【统一返回结果】{}",JsonUtil.toJson(data));
         return data;
     }
 

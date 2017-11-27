@@ -58,14 +58,9 @@ public class RedisConfig {
         return container;
     }
 
-    @Bean
-    public Jedis jedis(){
-        return new Jedis(redisProperties.getHost(),redisProperties.getPort());
-    }
-
-
-
-
-
+//    @Bean
+//    public Jedis jedis(){
+//        return new Jedis(redisProperties.getHost(),redisProperties.getPort());
+//    }
 
 }

@@ -21,6 +21,9 @@ public interface OrderDao {
             "where orderID = UUIDTOBIN(#{orderID}) ;")
     int updateOneStatus(OrderHead orderHead);
 
+    @Update("update order_head set orderStatus = -1 where orderID = #{orderID} ;" )
+    int timeout(@Param("orderID")String orderID);
+
     @Delete("delete from `order_head` " +
             "where orderID = UUIDTOBIN(#{orderID}) ;")
     int deleteOne(@Param("orderID")String orderID);

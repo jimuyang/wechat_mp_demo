@@ -1,6 +1,6 @@
 package com.muyi.mpdemo.controller;
 
-import com.muyi.mpdemo.frame.HttpSessionAdvice;
+import com.muyi.mpdemo.component.HttpSessionAdvice;
 import com.muyi.mpdemo.config.properties.ProjectProperties;
 import com.muyi.mpdemo.domain.Buyer;
 import com.muyi.mpdemo.exception.MpException;
