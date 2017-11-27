@@ -1,5 +1,7 @@
 package com.muyi.mpdemo.utils;
 
+import com.muyi.mpdemo.config.RedisPoolConfig;
+import com.muyi.mpdemo.dao.OrderDao;
 import com.muyi.mpdemo.domain.TestUser;
 import com.muyi.mpdemo.listener.RedisMsgPubSubListener;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +17,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import static org.junit.Assert.*;
 
@@ -30,7 +33,10 @@ import static org.junit.Assert.*;
 public class RedisUtilTest {
 
     @Autowired
-    private Jedis jedis;
+    private OrderDao orderDao;
+
+    @Autowired
+    private JedisPool jedisPool1;
 
     @Autowired
     private WxMpService wxMpService;
@@ -75,9 +81,17 @@ public class RedisUtilTest {
 
     @Test
     public void testRedisExpire(){
-        RedisMsgPubSubListener listener = new RedisMsgPubSubListener();
-        jedis.subscribe(listener,"__keyevent@0__:expired");
+        RedisMsgPubSubListener.OnMessageHandler redisExpireMsgHandler = new RedisMsgPubSubListener.OnMessageHandler() {
+            @Override
+            public void onMessage(String channel, String message) {
+                String expireKey = message;
+                //expireKey这里是过期的orderID，需要对订单做过期处理
+                orderDao.timeout(expireKey);
+            }
+        };
 
+        RedisMsgPubSubListener listener = new RedisMsgPubSubListener(redisExpireMsgHandler);
+        jedisPool1.getResource().subscribe(listener,"__keyevent@0__:expired");
     }
 
 

@@ -64,11 +64,7 @@ public class GlobalExceptionHandler {
         responseData.setMessage(e.getMessage());
         responseData.setStatus(false);
         responseData.setData(null);
-//        if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
-//            responseData.setCode(404);
-//        } else {
-//            responseData.setCode(500);
-//        }
+
         return responseData;
 
     }

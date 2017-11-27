@@ -41,7 +41,7 @@ public class WechatController {
     @Autowired
     private WxMpMessageRouter wxMpMessageRouter;
 
-    @GetMapping//(produces = "text/plain;charset=utf-8")
+    @GetMapping(produces = "text/plain;charset=utf-8")
     public String wechatAuthGet(@RequestParam(SIGNATURE) String signature,
                                 @RequestParam(TIMESTAMP) String timestamp,
                                 @RequestParam(NONCE) String nonce,
@@ -64,7 +64,7 @@ public class WechatController {
     }
 
 
-    @PostMapping//(produces = "application/xml; charset=UTF-8")
+    @PostMapping(produces = "application/xml; charset=UTF-8")
     public String wechatPostMsg(@RequestBody String requestBody,
                                 @RequestParam(SIGNATURE) String signature,
                                 @RequestParam(TIMESTAMP) String timestamp,

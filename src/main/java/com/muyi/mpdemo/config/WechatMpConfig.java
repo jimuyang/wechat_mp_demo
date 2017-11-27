@@ -13,6 +13,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 /**
  * @Author: muyi
@@ -31,9 +32,8 @@ public class WechatMpConfig {
     @Autowired
     protected WechatProperties wechatProperties;
     @Autowired
-    protected RedisProperties redisProperties;
-    @Autowired
-    protected Jedis jedis;
+    protected JedisPool jedisPool0;
+
 
     @Autowired
     protected LogHandler logHandler;
@@ -48,6 +48,7 @@ public class WechatMpConfig {
 
     @Bean
     public WxMpConfigStorage wxMpConfigStorage(){
+        log.warn("wxMpConfigStorage initialized ...");
         //WxMpInMemoryConfigStorage wxMpConfigStorage = new WxMpInMemoryConfigStorage();
         WxMpInRedisConfigStorage wxMpConfigStorage = new WxMpInRedisConfigStorage();
 
@@ -60,7 +61,7 @@ public class WechatMpConfig {
         wxMpConfigStorage.setAesKey(this.wechatProperties.getServer().getEncodingAESKey());
         wxMpConfigStorage.setToken(this.wechatProperties.getServer().getToken());
 
-        wxMpConfigStorage.setJedis(this.jedis);
+        wxMpConfigStorage.setJedis(jedisPool0.getResource());
 
         //log.info("WxMpConfigStorage: {}",JsonUtil.toJson(wxMpConfigStorage));
         return wxMpConfigStorage;
@@ -80,7 +81,6 @@ public class WechatMpConfig {
 
         //记录所有事件的日志（异步）
         newRouter.rule().async(true).handler(this.logHandler).next();
-
 
         //关注事件
         newRouter.rule().async(false).msgType(WxConsts.XML_MSG_EVENT)
