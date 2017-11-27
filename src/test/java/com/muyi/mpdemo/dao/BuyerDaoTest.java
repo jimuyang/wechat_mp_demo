@@ -30,6 +30,7 @@ public class BuyerDaoTest {
     public void insertOne() throws Exception {
         Buyer newBuyer = new Buyer();
         newBuyer.setBuyerID(KeyUtil.UUID());
+        newBuyer.setOpenID("open001");
         newBuyer.setBuyerName("xiaoming");
         newBuyer.setBuyerPass("1234");
         newBuyer.setAccountBalance(new BigDecimal(100));
@@ -45,7 +46,7 @@ public class BuyerDaoTest {
 
     @Transactional
     public void tracTest1(){
-        String xiaoming_uuid = "33FAD6EC-832E-48F8-8470-EA176FF62C85";
+        String xiaoming_uuid = "3B6B9FBF-AC0E-4861-9CB3-62A54E08D2E2";
         Buyer buyer = buyerDao.selectOneLock(xiaoming_uuid);
         log.info("xiaoming:{}", JsonUtil.toPrettyJson(buyer));
     }

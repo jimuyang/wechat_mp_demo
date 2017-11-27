@@ -38,7 +38,7 @@ public class ServiceLogAspect {
         }
 
         log.info("【ServiceLog】method:{}",pjp.getSignature().getDeclaringTypeName() + "..." + pjp.getSignature().getName());
-        log.info("【ServiceLog】args:{}",argsBuilder.toString());
+        log.info("【ServiceLog】args  :{}",argsBuilder.toString());
         Object result = pjp.proceed();
         log.info("【ServiceLog】result:{}", JsonUtil.toJson(result));
         return result;

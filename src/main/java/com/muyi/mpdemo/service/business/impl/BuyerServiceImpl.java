@@ -1,6 +1,6 @@
 package com.muyi.mpdemo.service.business.impl;
 
-import com.muyi.mpdemo.frame.HttpSessionAdvice;
+import com.muyi.mpdemo.component.HttpSessionAdvice;
 import com.muyi.mpdemo.dao.BuyerDao;
 import com.muyi.mpdemo.domain.Buyer;
 import com.muyi.mpdemo.service.business.BuyerService;
