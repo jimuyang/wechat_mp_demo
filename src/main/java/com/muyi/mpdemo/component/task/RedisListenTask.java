@@ -30,13 +30,13 @@ public class RedisListenTask{
             @Override
             public void onMessage(String channel, String message) {
                 String expireKey = message;
-                //expireKey这里是过期的orderID，需要对订单做过期处理
+                //expireKey 这里是过期的orderID，需要对订单做过期处理
                 orderDao.timeout(expireKey);
             }
         };
         log.error("orderDao in RedisListenTask :{}",orderDao);
         RedisMsgPubSubListener listener = new RedisMsgPubSubListener(redisExpireMsgHandler);
-        jedisPool1.getResource().subscribe(listener,"__keyevent@0__:expired");
+        jedisPool1.getResource().subscribe(listener,"__keyevent@1__:expired");
     }
 
 }

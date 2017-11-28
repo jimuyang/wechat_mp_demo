@@ -20,12 +20,13 @@ import redis.clients.jedis.Jedis;
  * @Description:
  */
 
+@Deprecated
 @Configuration
 @EnableConfigurationProperties({WechatProperties.class, RedisProperties.class})
 public class RedisConfig {
 
-    @Autowired
-    private RedisProperties redisProperties;
+//    @Autowired
+//    private RedisProperties redisProperties;
 
 //    @Autowired
 //    private RedisTemplate redisTemplate;

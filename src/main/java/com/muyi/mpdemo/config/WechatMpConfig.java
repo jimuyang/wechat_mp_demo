@@ -18,7 +18,7 @@ import redis.clients.jedis.JedisPool;
 /**
  * @Author: muyi
  * @Date: Created in 16:29 2017/11/7
- * @Description:
+ * @Description: 所有来自微信服务器的消息处理配置
  */
 
 @Configuration
@@ -48,7 +48,7 @@ public class WechatMpConfig {
 
     @Bean
     public WxMpConfigStorage wxMpConfigStorage(){
-        log.warn("wxMpConfigStorage initialized ...");
+
         //WxMpInMemoryConfigStorage wxMpConfigStorage = new WxMpInMemoryConfigStorage();
         WxMpInRedisConfigStorage wxMpConfigStorage = new WxMpInRedisConfigStorage();
 
@@ -63,8 +63,7 @@ public class WechatMpConfig {
 
         wxMpConfigStorage.setJedis(jedisPool0.getResource());
 
-        log.warn("WxMpConfigStorage initialized...");
-        //log.info("WxMpConfigStorage: {}",JsonUtil.toJson(wxMpConfigStorage));
+        log.warn("wxMpConfigStorage initialized ...");
         return wxMpConfigStorage;
     }
 

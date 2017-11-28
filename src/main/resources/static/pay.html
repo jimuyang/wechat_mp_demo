@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Pay</title>
-
-    <script>
+<script>
         function onBridgeReady(){
             WeixinJSBridge.invoke(
                 'getBrandWCPayRequest', {
-                    "appId":"wx2421b1c4370ec43b",     //公众号名称，由商户传入     
+                    "appId":"wxd898fcb01713c658",     //公众号名称，由商户传入     
                     "timeStamp":"1395712654",         //时间戳，自1970年以来的秒数     
                     "nonceStr":"e61463f8efa94090b1f366cccfbbb444", //随机串     
                     "package":"prepay_id=u802345jgfjsdfgsdg888",
@@ -30,9 +24,4 @@
         }else{
             onBridgeReady();
         }
-    </script>
-</head>
-<body>
-
-</body>
-</html>
+</script>

@@ -37,6 +37,7 @@ public class WechatProperties {
         //商户密钥
         private String mchKey;
         //商户证书路径
+        //h5.p12文件的绝对路径，或者如果放在项目中，请以classpath:开头指定
         private String keyPath;
         //微信支付异步通知地址
         private String notifyUrl;

@@ -36,15 +36,17 @@ wechat:
   mp:
     appId: wxd898fcb01713c658
     appSecret: xxxxxxxxxxxxxx
-#  server:
+  server:
 #    url: http://muyi.natapp1.cc/mpserver/wechat/portal
 #    token: muyimptoken
 #    encodingAESKey: gnJTQGs6Hwz6CnmScUYQM6TOyijeKx9bfZ4mYUeMMIU
+  #微信支付相关配置
   pay:
     mchId: 1483469312
     mchKey: C5245D70627C1F8E9964D494B0735025
     keyPath: classpath:h5.p12
     notifyUrl:  http://xxx.com/notify
+  #微信开放平台信息
   open:
     appId: wx6ad144e54af67d87
     appSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e
