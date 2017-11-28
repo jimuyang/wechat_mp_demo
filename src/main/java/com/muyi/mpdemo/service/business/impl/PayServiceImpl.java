@@ -1,5 +1,9 @@
 package com.muyi.mpdemo.service.business.impl;
 
+import com.github.binarywang.wxpay.bean.request.*;
+import com.github.binarywang.wxpay.bean.result.*;
+import com.github.binarywang.wxpay.exception.WxPayException;
+import com.github.binarywang.wxpay.service.WxPayService;
 import com.muyi.mpdemo.service.business.PayService;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +38,6 @@ public class PayServiceImpl implements PayService {
      * @param orderID       商户系统内部的订单号，当没提供transactionId时需要传这个。
      */
 
-    @Override
     public WxPayOrderQueryResult queryOrder(String transactionId, String orderID)
             throws WxPayException {
         return this.wxPayService.queryOrder(transactionId, orderID);
@@ -56,7 +59,6 @@ public class PayServiceImpl implements PayService {
      * @param orderID 商户系统内部的订单号
      */
 
-    @Override
     public WxPayOrderCloseResult closeOrder(String orderID) {
         try {
             WxPayOrderCloseResult orderCloseResult = this.wxPayService.closeOrder(orderID);
@@ -74,7 +76,7 @@ public class PayServiceImpl implements PayService {
      *
      * @param request 请求对象，注意一些参数如appid、mchid等不用设置，方法内会自动从配置对象中获取到（前提是对应配置中已经设置）
      */
-    @Override
+
     public WxPayUnifiedOrderResult unifiedOrder(WxPayUnifiedOrderRequest request) throws WxPayException {
 
         return this.wxPayService.unifiedOrder(request);
@@ -90,7 +92,7 @@ public class PayServiceImpl implements PayService {
      * @param request 请求对象
      * @return 退款操作结果
      */
-    @Override
+
     public WxPayRefundResult refund(WxPayRefundRequest request) throws WxPayException {
         return this.wxPayService.refund(request);
     }
@@ -112,7 +114,6 @@ public class PayServiceImpl implements PayService {
      * @param refundId      微信退款单号
      * @return 退款信息
      */
-    @Override
     public WxPayRefundQueryResult refundQuery(String transactionId, String orderID, String outRefundNo, String refundId)
             throws WxPayException {
         return this.wxPayService.refundQuery(transactionId, orderID, outRefundNo, refundId);
@@ -130,7 +131,6 @@ public class PayServiceImpl implements PayService {
      *
      * @param request 请求对象
      */
-    @Override
     public WxPaySendRedpackResult sendRedpack(WxPaySendRedpackRequest request) throws WxPayException {
         return this.wxPayService.sendRedpack(request);
     }
@@ -146,7 +146,6 @@ public class PayServiceImpl implements PayService {
      *
      * @param mchBillNo 商户发放红包的商户订单号，比如10000098201411111234567890
      */
-    @Override
     public WxPayRedpackQueryResult queryRedpack(String mchBillNo) throws WxPayException {
         return this.wxPayService.queryRedpack(mchBillNo);
     }
@@ -165,7 +164,6 @@ public class PayServiceImpl implements PayService {
      * @param sideLength 要生成的二维码的边长，如果为空，则取默认值400
      * @return 生成的二维码的字节数组
      */
-    @Override
     public byte[] createScanPayQrcodeMode1(String productId, File logoFile, Integer sideLength) {
         return this.wxPayService.createScanPayQrcodeMode1(productId, logoFile, sideLength);
     }
@@ -182,7 +180,6 @@ public class PayServiceImpl implements PayService {
      * @param productId 产品Id
      * @return 生成的二维码URL连接
      */
-    @Override
     public String createScanPayQrcodeMode1(String productId) {
         return this.wxPayService.createScanPayQrcodeMode1(productId);
     }
@@ -200,7 +197,6 @@ public class PayServiceImpl implements PayService {
      * @param sideLength 要生成的二维码的边长，如果为空，则取默认值400
      * @return 生成的二维码的字节数组
      */
-    @Override
     public byte[] createScanPayQrcodeMode2(String codeUrl, File logoFile, Integer sideLength) {
         return this.wxPayService.createScanPayQrcodeMode2(codeUrl, logoFile, sideLength);
     }
@@ -218,7 +214,6 @@ public class PayServiceImpl implements PayService {
      *
      * @param request
      */
-    @Override
     public void report(WxPayReportRequest request) throws WxPayException {
         this.wxPayService.report(request);
     }
@@ -242,7 +237,7 @@ public class PayServiceImpl implements PayService {
      * @param deviceInfo 设备号	device_info	非必传参数，终端设备号
      * @return 保存到本地的临时文件
      */
-    @Override
+
     public WxPayBillResult downloadBill(String billDate, String billType,
                                         String tarType, String deviceInfo) throws WxPayException {
         return this.wxPayService.downloadBill(billDate, billType, tarType, deviceInfo);
@@ -260,7 +255,7 @@ public class PayServiceImpl implements PayService {
      * 是否需要证书：不需要。
      * </pre>
      */
-    @Override
+
     public WxPayMicropayResult micropay(WxPayMicropayRequest request) throws WxPayException {
         return this.wxPayService.micropay(request);
     }
@@ -278,30 +273,29 @@ public class PayServiceImpl implements PayService {
      * </pre>
      */
 
-    @Override
+
     public WxPayOrderReverseResult reverseOrder(WxPayOrderReverseRequest request) throws WxPayException {
         return this.wxPayService.reverseOrder(request);
     }
 
-    @Override
+
     public String shorturl(WxPayShorturlRequest wxPayShorturlRequest) throws WxPayException {
         //TODO 待补充完善
         return null;
     }
 
-    @Override
     public String shorturl(String s) throws WxPayException {
         //TODO 待补充完善
         return null;
     }
 
-    @Override
+
     public String authcode2Openid(WxPayAuthcode2OpenidRequest wxPayAuthcode2OpenidRequest) throws WxPayException {
         //TODO 待补充完善
         return null;
     }
 
-    @Override
+
     public String authcode2Openid(String s) throws WxPayException {
         //TODO 待补充完善
         return null;
