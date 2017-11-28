@@ -21,27 +21,4 @@ import java.io.File;
 public class WechatPayController {
 
 
-    @Autowired
-    private PayService payService;
-
-
-    @GetMapping("/create")
-    public void create(@RequestParam String orderID,
-                       @RequestParam String returnUrl){
-//        //查询订单
-//        OrderHead orderHead = new OrderHead();
-//        orderHead.setOrderID(orderID);
-//
-//        WxPayUnifiedOrderRequest request = new WxPayUnifiedOrderRequest();
-//        request.setOpenid();
-//        request.setTotalFee();
-//        request.setOutTradeNo(orderID);
-//        request.
-//        ;
-//        payService.unifiedOrder();
-
-
-    }
-
-
 }

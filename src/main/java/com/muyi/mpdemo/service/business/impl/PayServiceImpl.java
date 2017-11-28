@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 
+@Deprecated
 @Slf4j
-@Service("payService")
+//@Service("payService")
 public class PayServiceImpl implements PayService {
 
-    @Autowired
+    //@Autowired
     private WxPayService wxPayService;
 
     /**

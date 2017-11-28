@@ -27,24 +27,24 @@ public class WechatPayConfig {
     @Autowired
     private WechatProperties wechatProperties;
 
-    @Bean
-    @ConditionalOnMissingBean
-    public WxPayConfig wxPayConfig(){
-        WxPayConfig payConfig = new WxPayConfig();
-        payConfig.setAppId(this.wechatProperties.getMp().getAppId());
-        payConfig.setMchId(this.wechatProperties.getPay().getMchId());
-        payConfig.setMchKey(this.wechatProperties.getPay().getMchKey());
-        payConfig.setKeyPath(this.wechatProperties.getPay().getKeyPath());
-
-        return payConfig;
-    }
-
-    @Bean
-    public WxPayService wxPayService(WxPayConfig payConfig){
-        WxPayService wxPayService = new WxPayServiceImpl();
-        wxPayService.setConfig(payConfig);
-        return wxPayService;
-    }
+//    @Bean
+//    @ConditionalOnMissingBean
+//    public WxPayConfig wxPayConfig(){
+//        WxPayConfig payConfig = new WxPayConfig();
+//        payConfig.setAppId(this.wechatProperties.getMp().getAppId());
+//        payConfig.setMchId(this.wechatProperties.getPay().getMchId());
+//        payConfig.setMchKey(this.wechatProperties.getPay().getMchKey());
+//        payConfig.setKeyPath(this.wechatProperties.getPay().getKeyPath());
+//
+//        return payConfig;
+//    }
+//
+//    @Bean
+//    public WxPayService wxPayService(WxPayConfig payConfig){
+//        WxPayService wxPayService = new WxPayServiceImpl();
+//        wxPayService.setConfig(payConfig);
+//        return wxPayService;
+//    }
 
 //    @Bean
 //    public BestPayServiceImpl bestPayService(){

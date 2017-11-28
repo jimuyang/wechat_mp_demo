@@ -11,6 +11,7 @@ import java.io.File;
  * @Date: Created in 14:44 2017/11/28
  * @Description:
  */
+@Deprecated
 public interface PayService {
 
     WxPayOrderQueryResult queryOrder(String transactionId, String orderID)
