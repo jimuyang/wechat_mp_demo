@@ -27,36 +27,36 @@ public class RedisConfig {
     @Autowired
     private RedisProperties redisProperties;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
+//    @Autowired
+//    private RedisTemplate redisTemplate;
+//
+//    @Autowired
+//    StringRedisTemplate stringRedisTemplate;
 
-    @Autowired
-    StringRedisTemplate stringRedisTemplate;
+//
+//    //@Bean
+//    public RedisTemplate redisTemplate(){
+//        RedisSerializer stringSerializer = new StringRedisSerializer();
+//        redisTemplate.setKeySerializer(stringSerializer);
+//        //redisTemplate.setValueSerializer(stringSerializer);
+//        redisTemplate.setHashKeySerializer(stringSerializer);
+//        redisTemplate.setHashValueSerializer(stringSerializer);
+//
+//        return redisTemplate;
+//    }
 
 
     //@Bean
-    public RedisTemplate redisTemplate(){
-        RedisSerializer stringSerializer = new StringRedisSerializer();
-        redisTemplate.setKeySerializer(stringSerializer);
-        //redisTemplate.setValueSerializer(stringSerializer);
-        redisTemplate.setHashKeySerializer(stringSerializer);
-        redisTemplate.setHashValueSerializer(stringSerializer);
+//    public StringRedisTemplate stringRedisTemplate() {
+//        return stringRedisTemplate;
+//    }
 
-        return redisTemplate;
-    }
-
-
-    //@Bean
-    public StringRedisTemplate stringRedisTemplate() {
-        return stringRedisTemplate;
-    }
-
-    @Bean
-    public RedisMessageListenerContainer redisMessageListenerContainer(){
-        RedisMessageListenerContainer container =  new RedisMessageListenerContainer();
-        container.setConnectionFactory(redisTemplate.getConnectionFactory());
-        return container;
-    }
+//    @Bean
+//    public RedisMessageListenerContainer redisMessageListenerContainer(){
+//        RedisMessageListenerContainer container =  new RedisMessageListenerContainer();
+//        container.setConnectionFactory(redisTemplate.getConnectionFactory());
+//        return container;
+//    }
 
 //    @Bean
 //    public Jedis jedis(){

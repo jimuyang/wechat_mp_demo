@@ -26,7 +26,6 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private HttpSessionAdvice httpSession;
 
-
     @Override
     public OrderHead getOrderInfo(String orderID) {
         return orderDao.selectOne(orderID);

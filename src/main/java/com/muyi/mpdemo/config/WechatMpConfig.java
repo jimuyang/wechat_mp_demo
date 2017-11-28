@@ -63,6 +63,7 @@ public class WechatMpConfig {
 
         wxMpConfigStorage.setJedis(jedisPool0.getResource());
 
+        log.warn("WxMpConfigStorage initialized...");
         //log.info("WxMpConfigStorage: {}",JsonUtil.toJson(wxMpConfigStorage));
         return wxMpConfigStorage;
     }

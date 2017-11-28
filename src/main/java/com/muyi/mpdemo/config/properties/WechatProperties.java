@@ -31,9 +31,21 @@ public class WechatProperties {
     }
 
     @Data
-    public static class Pay{}
+    public static class Pay{
+        //商户号
+        private String mchId;
+        //商户密钥
+        private String mchKey;
+        //商户证书路径
+        private String keyPath;
+        //微信支付异步通知地址
+        private String notifyUrl;
+    }
     @Data
-    public static class Open{}
+    public static class Open{
+        private String appId;
+        private String appSecret;
+    }
 
 }
 

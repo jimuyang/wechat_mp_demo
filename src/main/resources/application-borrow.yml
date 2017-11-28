@@ -31,23 +31,23 @@ project:
     authUserInfo: http://muyi.natapp1.cc/mpserver/wechat/web/userInfo
     webAuth: http://muyi.natapp1.cc/mpserver/wechat/web/authorize
 
-#公众平台测试号
+#公众平台借用账号 估计只能用于支付测试
 wechat:
   mp:
-    appId: wxebc5ad283406f8f7
-    appSecret: 2cc1350ab9592dd8609540eee33dc6f2
-  server:
-    url: http://muyi.natapp1.cc/mpserver/wechat/portal
-    token: muyimptoken
-    encodingAESKey: gnJTQGs6Hwz6CnmScUYQM6TOyijeKx9bfZ4mYUeMMIU
+    appId: wxd898fcb01713c658
+    appSecret: xxxxxxxxxxxxxx
+#  server:
+#    url: http://muyi.natapp1.cc/mpserver/wechat/portal
+#    token: muyimptoken
+#    encodingAESKey: gnJTQGs6Hwz6CnmScUYQM6TOyijeKx9bfZ4mYUeMMIU
   pay:
-    mchId: 1483xxxx
-    mchKey: C5245D70xxxxx
-    keyPath: /var/weixin_cert/h5.p12
+    mchId: 1483469312
+    mchKey: C5245D70627C1F8E9964D494B0735025
+    keyPath: classpath:h5.p12
     notifyUrl:  http://xxx.com/notify
   open:
-    appId:
-    appSecret:
+    appId: wx6ad144e54af67d87
+    appSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e
 
 #mybatis配置
 mybatis:
