@@ -1,10 +1,5 @@
 package com.muyi.mpdemo.service.business.impl;
 
-import com.github.binarywang.wxpay.bean.request.*;
-import com.github.binarywang.wxpay.bean.result.*;
-import com.github.binarywang.wxpay.exception.WxPayException;
-import com.github.binarywang.wxpay.service.WxPayService;
-
 import com.muyi.mpdemo.service.business.PayService;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
