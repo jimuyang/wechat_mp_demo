@@ -104,6 +104,13 @@
             <artifactId>logback-core</artifactId>
         </dependency>
 
+		<!--微信官方支付sdk-->
+		<dependency>
+			<groupId>com.github.wxpay</groupId>
+			<artifactId>WXPay-SDK-Java</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+
         <!--微信第三方sdk-->
         <dependency>
             <groupId>com.github.binarywang</groupId>
@@ -130,6 +137,13 @@
         </dependency>
 
     </dependencies>
+
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>

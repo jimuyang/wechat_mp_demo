@@ -11,6 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -115,6 +116,23 @@ public class CommonTest {
     }
 
 
+    @Test
+    public void urlTest() throws Exception{
+
+        String openID =  "oTgZpwXr5pg2eSS99pcYBwYiaVvY"; //openID
+        String web = "http://muyi.natapp1.cc/seller/login";//我的网址
+
+        String result = URLEncoder.encode(openID,"utf-8");
+
+        log.info(result);
+        result = URLEncoder.encode(web);
+
+        log.info(result);
+
+
+    }
+
+
 
 
 }
@@ -132,10 +150,9 @@ class Hash{
         //if (!super.equals(o)) return false;
         Hash hash = (Hash) o;
 
-        log.info("???? {} .equals {}",this.toString(),hash.toString());
+        log.info("???? {} .equals {}", this.toString(), hash.toString());
 
-        if (getInt1() != hash.getInt1()) return false;
-        return getInt2() == hash.getInt2();
+        return getInt1() == hash.getInt1() && getInt2() == hash.getInt2();
     }
 
     @Override

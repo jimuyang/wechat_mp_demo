@@ -41,6 +41,10 @@ public class WechatProperties {
         private String keyPath;
         //微信支付异步通知地址
         private String notifyUrl;
+        //签名方式
+        private String signType;
+        //使用沙箱？
+        private boolean useSandbox;
     }
     @Data
     public static class Open{

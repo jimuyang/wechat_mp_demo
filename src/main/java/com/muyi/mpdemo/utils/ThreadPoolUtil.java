@@ -7,6 +7,7 @@ import java.util.concurrent.*;
  * @Date: Created in 15:37 2017/11/27
  * @Description: 线程池管理多线程任务 工具类
  */
+@Deprecated
 public class ThreadPoolUtil {
 
     private final ExecutorService executor;

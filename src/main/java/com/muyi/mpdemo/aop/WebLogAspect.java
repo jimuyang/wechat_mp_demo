@@ -91,7 +91,7 @@ public class WebLogAspect {
 //        }
 
         log.info("【ControllerLog】method:{}",pjp.getSignature().getDeclaringTypeName() + "..." + pjp.getSignature().getName());
-        log.info("【ControllerLog】args  :{}",JsonUtil.toJson(args));
+        log.info("【ControllerLog】args  :{}",args.toString());
         Object result = pjp.proceed();
         log.info("【ControllerLog】result:{}",JsonUtil.toJson(result));
         return result;

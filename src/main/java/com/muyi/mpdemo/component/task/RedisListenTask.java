@@ -34,7 +34,7 @@ public class RedisListenTask{
                 orderDao.timeout(expireKey);
             }
         };
-        log.error("orderDao in RedisListenTask :{}",orderDao);
+        //log.error("orderDao in RedisListenTask :{}",orderDao);
         RedisMsgPubSubListener listener = new RedisMsgPubSubListener(redisExpireMsgHandler);
         jedisPool1.getResource().subscribe(listener,"__keyevent@1__:expired");
     }

@@ -7,7 +7,8 @@
                     "nonceStr":"${payResponse.nonceStr}", //随机串
                     "package":"${payResponse.packAge}",
                     "signType":"MD5",         //微信签名方式：
-                    "paySign":"${payResponse.paySign}" //微信签名
+                    "paySign":"${payResponse.paySign}",//微信签名
+                    "debug":true
                 },
                 function(res){
                     if(res.err_msg == "get_brand_wcpay_request:ok" ) {

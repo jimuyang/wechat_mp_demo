@@ -30,7 +30,9 @@ project:
     index: http://muyi.natapp1.cc/mpserver/index
     authUserInfo: http://muyi.natapp1.cc/mpserver/wechat/web/userInfo
     webAuth: http://muyi.natapp1.cc/mpserver/wechat/web/authorize
+
 #公众平台借用账号 估计只能用于支付测试
+#仅有一个openID可用： oTgZpwXr5pg2eSS99pcYBwYiaVvY
 wechat:
   mp:
     appId: wxd898fcb01713c658
@@ -43,8 +45,11 @@ wechat:
   pay:
     mchId: 1483469312
     mchKey: C5245D70627C1F8E9964D494B0735025
-    keyPath: classpath:h5.p12
-    notifyUrl:  http://muyi.natapp1.cc/notify
+    keyPath: classpath:wechat_cert/h5.p12
+    notifyUrl: http://muyi.natapp1.cc/pay/notify
+
+    signType: MD5
+    useSandbox: false
   #微信开放平台信息
   open:
     appId: wx6ad144e54af67d87
