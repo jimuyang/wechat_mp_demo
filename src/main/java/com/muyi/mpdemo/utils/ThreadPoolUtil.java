@@ -5,7 +5,7 @@ import java.util.concurrent.*;
 /**
  * @Author: muyi
  * @Date: Created in 15:37 2017/11/27
- * @Description: çº¿ç¨‹æ± ç®¡ç†å¤šçº¿ç¨‹ä»»åŠ¡ å·¥å…·ç±»
+ * @Description: Ïß³Ì³Ø¹ÜÀí¶àÏß³ÌÈÎÎñ ¹¤¾ßÀà
  */
 @Deprecated
 public class ThreadPoolUtil {

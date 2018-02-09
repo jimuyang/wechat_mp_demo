@@ -2,13 +2,20 @@
     function onBridgeReady(){
         WeixinJSBridge.invoke(
                 'getBrandWCPayRequest', {
-                    "appId":"${payResponse.appId}",     //公众号名称，由商户传入
-                    "timeStamp":"${payResponse.timeStamp}",         //时间戳，自1970年以来的秒数
-                    "nonceStr":"${payResponse.nonceStr}", //随机串
-                    "package":"${payResponse.packAge}",
+                    <#--"appId":"${payResponse.appId}",     //公众号名称，由商户传入-->
+                    <#--"timeStamp":"${payResponse.timeStamp}",         //时间戳，自1970年以来的秒数-->
+                    <#--"nonceStr":"${payResponse.nonceStr}", //随机串-->
+                    <#--"package":"${payResponse.packAge}",-->
+                    <#--"signType":"MD5",         //微信签名方式：-->
+                    <#--"paySign":"${payResponse.paySign}",//微信签名-->
+                    <#--"debug":true-->
+                <#--},-->
+                    "appId":"wxff8b1890151e2439",     //公众号名称，由商户传入
+                    "timeStamp":"1512623125",         //时间戳，自1970年以来的秒数
+                    "nonceStr":"be451d0273a24a5c881977c053a72f8b", //随机串
+                    "package":"prepay_id=wx201712071305253ca320191d0140368592",
                     "signType":"MD5",         //微信签名方式：
-                    "paySign":"${payResponse.paySign}",//微信签名
-                    "debug":true
+                    "paySign":"77DF1422D14A2202379E5D3F3127F2CF"//微信
                 },
                 function(res){
                     if(res.err_msg == "get_brand_wcpay_request:ok" ) {

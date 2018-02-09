@@ -7,6 +7,7 @@ import com.muyi.mpdemo.dto.CreateOrderReq;
 import com.muyi.mpdemo.enums.OrderStatusEnum;
 import com.muyi.mpdemo.service.business.OrderService;
 import com.muyi.mpdemo.utils.KeyUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
  * @Date: Created in 18:37 2017/11/20
  * @Description:
  */
+@Slf4j
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
 
@@ -33,6 +35,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public String createOrder(CreateOrderReq coReq) {
+
         OrderHead orderHead = new OrderHead();
         //生成订单ID
         String orderID = KeyUtil.UUID();

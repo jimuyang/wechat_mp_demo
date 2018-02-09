@@ -18,5 +18,6 @@ public class ResponseData {
     private boolean status;
     private int code;
     private String message;
+    private int count;
     private Object data;
 }
